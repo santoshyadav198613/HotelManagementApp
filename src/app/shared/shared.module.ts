@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NamePipe } from '../custom/name.pipe';
 import { SalaryPipe } from '../custom/salary.pipe';
 import { HoverDirective } from '../custom/hover/hover.directive';
+import { ShortnamePipe } from '../custom/shortname/shortname.pipe';
 
 @NgModule({
   imports: [
@@ -20,8 +21,9 @@ import { HoverDirective } from '../custom/hover/hover.directive';
     ReactiveFormsModule,
     NamePipe,
     SalaryPipe,
-    HoverDirective
+    HoverDirective,
+    ShortnamePipe
   ],
-  declarations: [NamePipe, SalaryPipe, HoverDirective]
+  declarations: [NamePipe, SalaryPipe, HoverDirective, ShortnamePipe]
 })
 export class SharedModule { }

@@ -29,7 +29,6 @@ import { LoginService } from './login/service/login.service';
 import { AuthGuard } from './guards/auth.guard';
 import { PasswordValidatorDirective } from './custom/password-validator/password-validator.directive';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +41,7 @@ import { PasswordValidatorDirective } from './custom/password-validator/password
     PhotosComponent,
     PagenotfoundComponent,
     LoginComponent,
-    PasswordValidatorDirective
+    PasswordValidatorDirective    
   ],
   imports: [
     BrowserModule,
