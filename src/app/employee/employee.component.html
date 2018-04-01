@@ -1,0 +1,33 @@
+<app-header>
+  <h1> Employee Component</h1>
+</app-header>
+{{title}}
+
+<div [style.background]="color" [ngClass]="{'alert alert-success' :isVisible }">
+  {{ departmentName }}
+</div>
+
+<div *ngIf="isVisible">
+
+  <app-employee-list [title]="title" [employeeList]="empList" (selectedEmployee)="receiveEmployee($event)"></app-employee-list>
+
+</div>
+
+<button class="btn btn-primary" type="button" (click)="toggle()">Toggle</button>
+
+{{empList | json}}
+
+<div [ngSwitch]="role">
+  <div *ngSwitchCase="'Admin'">
+    This is Admin View
+  </div>
+  <div *ngSwitchCase="'Super Admin'">
+    This is Super Admin view
+  </div>
+  <div *ngSwitchCase="'User'">
+    This is user view
+  </div>
+  <div *ngSwitchDefault>
+    The user role is not available.
+  </div>
+</div>
