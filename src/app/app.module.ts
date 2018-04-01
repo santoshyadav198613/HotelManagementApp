@@ -10,6 +10,7 @@ import { DepartmentListComponent } from './department/department-list/department
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 
+import { DepartmentService } from './department/service/department.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { HomeComponent } from './home/home.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [DepartmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

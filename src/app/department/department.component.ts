@@ -1,17 +1,20 @@
 import {
   Component, OnInit, ViewChild, ViewChildren, QueryList
-  , AfterViewInit, ViewEncapsulation
+  , AfterViewInit, ViewEncapsulation , SkipSelf , Host
 } from '@angular/core';
 
 import { DepartmentListComponent } from './department-list/department-list.component';
 import { Department } from './department';
+
+import { DepartmentService } from './service/department.service';
 
 @Component({
   selector: 'app-department',
   templateUrl: './department.component.html',
   styleUrls: ['./department.component.css'],
   encapsulation: ViewEncapsulation.None,
-  host: { 'class': 'app-department' }
+  host: { 'class': 'app-department' },
+  providers : [DepartmentService]
 })
 export class DepartmentComponent implements OnInit, AfterViewInit {
   deptList: Department[] = [];
@@ -20,15 +23,13 @@ export class DepartmentComponent implements OnInit, AfterViewInit {
   @ViewChild('sampleDiv') divComponent: any;
   @ViewChildren(DepartmentListComponent)
   departmentChildrentListComponent: QueryList<DepartmentListComponent>;
-  constructor() {
-    this.deptList = [
-      { id: 1, name: 'IT', head: 'Anand', count: 200 },
-      { id: 1, name: 'Marketing', head: 'Amit', count: 100 },
-      { id: 1, name: 'Finance', head: 'James', count: 300 }
-    ]
+  // departmentService = new DepartmentService();
+  constructor(@Host() private departmentService: DepartmentService) {
+    
   }
 
   ngOnInit() {
+    this.deptList = this.departmentService.getDepartments();
     console.log(this.departmentChildrentListComponent);
     this.departmentListComponent.departmentList = this.deptList;
   }

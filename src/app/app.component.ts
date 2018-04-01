@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { DepartmentService } from './department/service/department.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,16 @@ import { Component } from '@angular/core';
   // </h1>`,
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
+
+  constructor(private departmentService:DepartmentService ){
+
+  }
+
+  ngOnInit() {
+    this.departmentService.getDepartments();
+    this.departmentService.addDepartment();
+  }
+
 }
