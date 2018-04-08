@@ -1,0 +1,32 @@
+<h1>
+  Posts List
+</h1>
+
+Downloaded Data : {{downloadedBytes}}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>User Id</th>
+      <th>Title</th>
+      <th>Body</th>
+      <th>
+        Delete
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let post of postsList">
+      <td>{{post.id}}</td>
+      <td>{{post.userId}}</td>
+      <td>{{post.title}}</td>
+      <td>{{post.body}}</td>
+      <td>
+        <button type="button" class="btn btn-danger" (click)="delete(post.id)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

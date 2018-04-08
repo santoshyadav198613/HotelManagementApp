@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 
+import { Observable } from 'rxjs/Observable';
+
+import 'rxjs/add/observable/of'
+
 import { Department } from '../department';
 
 @Injectable()
@@ -13,7 +17,7 @@ export class DepartmentService {
   }
 
   getDepartments() {
-    return this.deptList;
+    return Observable.of(this.deptList);
   }
 
   addDepartment() {

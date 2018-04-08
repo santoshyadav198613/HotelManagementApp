@@ -1,0 +1,56 @@
+<h1>
+  Post Component
+</h1>
+
+{{postData | json }}
+
+{{postForm.invalid | json}}
+{{postForm.valid | json}}
+{{postForm.pristine | json}}
+{{postForm.dirty | json}}
+{{postForm.value | json}}
+<form #postForm="ngForm" (submit)="savePost(postForm)" novalidate>
+  <div class="form-group">
+    <input #userid="ngModel" required min="1" max="100"  type="number" [(ngModel)]="postData.userId" name="userid" class="form-control" placeholder="User ID">
+    {{userid.invalid}}
+    {{userid.valid}}
+    {{userid.pristine}}
+    {{userid.dirty}}
+    {{userid.errors | json}}
+    {{userid.value}}
+    <div class="alert alert-danger" *ngIf="userid.errors?.required && userid.dirty">
+      Please provide userid.
+    </div>
+  </div>
+  <div class="form-group">
+      <input #title="ngModel" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required minlength="10" maxlength="40" type="email" [(ngModel)]="postData.title" name="title" class="form-control" placeholder="Title">
+
+      {{title.invalid}}
+    {{title.valid}}
+    {{title.pristine}}
+    {{title.dirty}}
+    {{title.errors | json}}
+    {{title.value}}
+    <div class="alert alert-danger" *ngIf="title.errors?.required && title.dirty">
+      Please provide title.
+    </div>
+    <div class="alert alert-danger" *ngIf="title.errors?.minlength && title.dirty">
+      Please provide minimum 10 characters title.
+    </div>
+    <div class="alert alert-danger" *ngIf="title.errors?.pattern && title.dirty">
+      Please provide a valid email.
+    </div>
+  </div>
+  <div class="form-group">
+      <input required minlength="10" maxlength="40" type="text" [(ngModel)]="postData.body" name="body" class="form-control" placeholder="Body">
+  </div>
+  <div>
+    <button [disabled]="postForm.invalid" type="submit" class="btn btn-primary" >Add Post</button>
+  </div>
+</form>
+
+
+<hr>
+<button class="btn btn-primary" (click)="updatePost()">Update Post</button>
+
+<app-posts-list></app-posts-list>

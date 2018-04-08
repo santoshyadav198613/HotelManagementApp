@@ -1,6 +1,6 @@
 import {
   Component, OnInit, ViewChild, ViewChildren, QueryList
-  , AfterViewInit, ViewEncapsulation , SkipSelf , Host
+  , AfterViewInit, ViewEncapsulation, SkipSelf, Host
 } from '@angular/core';
 
 import { DepartmentListComponent } from './department-list/department-list.component';
@@ -14,7 +14,7 @@ import { DepartmentService } from './service/department.service';
   styleUrls: ['./department.component.css'],
   encapsulation: ViewEncapsulation.None,
   host: { 'class': 'app-department' },
-  providers : [DepartmentService]
+  providers: [DepartmentService]
 })
 export class DepartmentComponent implements OnInit, AfterViewInit {
   deptList: Department[] = [];
@@ -25,11 +25,15 @@ export class DepartmentComponent implements OnInit, AfterViewInit {
   departmentChildrentListComponent: QueryList<DepartmentListComponent>;
   // departmentService = new DepartmentService();
   constructor(@Host() private departmentService: DepartmentService) {
-    
+
   }
 
   ngOnInit() {
-    this.deptList = this.departmentService.getDepartments();
+    // this.deptList = this.departmentService.getDepartments();
+    this.departmentService.getDepartments().subscribe(
+      (res) => this.deptList = res,
+      (err) => console.log(err)
+    );
     console.log(this.departmentChildrentListComponent);
     this.departmentListComponent.departmentList = this.deptList;
   }
