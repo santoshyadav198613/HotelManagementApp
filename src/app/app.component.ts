@@ -12,7 +12,7 @@ import { ENV_PROVIDER } from './envProvider/envProvider';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'app';
+  title = 'Hotel Management App';
 
   constructor(private departmentService: DepartmentService,
     @Inject(ENV_PROVIDER) private envProvider: any) {

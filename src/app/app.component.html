@@ -1,9 +1,24 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
+<div class="container">
 
+  <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">{{title}} </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="employee">Employee</a>
+        <a class="nav-item nav-link" routerLink="posts">Posts</a>
+        <a class="nav-item nav-link" routerLink="order">Order</a>
+        <a class="nav-item nav-link" routerLink="photos">Photos</a>
+        <a class="nav-item nav-link" routerLink="department">Department</a>
+      </div>
+    </div>
+  </nav>
   <!-- <app-photos></app-photos> -->
 
-  <app-order></app-order>
+  <!-- <app-order></app-order>
   <hr>
   <app-home>
    
@@ -15,5 +30,6 @@
   </app-home>
 
   <hr>
-  <app-posts></app-posts>
+  <app-posts></app-posts> -->
+  <router-outlet></router-outlet>
 </div>

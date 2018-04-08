@@ -12,7 +12,7 @@ export class PostsService {
   constructor(private http: HttpClient, @Inject(APP_PROVIDER) private appProvider: IAppProvider) { }
 
   getPosts() {
-    return this.http.get<Posts[]>( this.appProvider.apiEndpoint + 'posts',
+    return this.http.get<Posts[]>(this.appProvider.apiEndpoint + 'posts',
       {
         headers: new HttpHeaders().set('apiKey', this.appProvider.apiKey).set('apiPwd', 'thisispassword')
       });
@@ -33,10 +33,14 @@ export class PostsService {
   }
 
   deletePost(id: number) {
-    return this.http.delete( this.appProvider.apiEndpoint + 'posts/' + id,
+    return this.http.delete(this.appProvider.apiEndpoint + 'posts/' + id,
       {
         headers: new HttpHeaders().set('apiKey', this.appProvider.apiKey).set('apiPwd', 'thisispassword')
       });
+  }
+
+  getPostById(id: number) {
+    return this.http.get<Posts>(this.appProvider.apiEndpoint + 'posts/' + id);
   }
 
 }

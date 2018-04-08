@@ -14,6 +14,9 @@ Downloaded Data : {{downloadedBytes}}
       <th>
         Delete
       </th>
+      <th>
+        Details
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -25,6 +28,11 @@ Downloaded Data : {{downloadedBytes}}
       <td>
         <button type="button" class="btn btn-danger" (click)="delete(post.id)">
           Delete
+        </button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-danger" [routerLink]="[post.id]">
+          Details
         </button>
       </td>
     </tr>

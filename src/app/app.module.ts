@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -22,6 +23,8 @@ import { APP_PROVIDER, App_Values } from './appProvider/appProvider';
 import { ENV_PROVIDER } from './envProvider/envProvider';
 import { environment } from '../environments/environment';
 import { OrderComponent } from './order/order.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { PostDetailsComponent } from './posts/post-details/post-details.component';
 
 @NgModule({
   declarations: [
@@ -35,13 +38,27 @@ import { OrderComponent } from './order/order.component';
     PostsComponent,
     PostsListComponent,
     PhotosComponent,
-    OrderComponent
+    OrderComponent,
+    PagenotfoundComponent,
+    PostDetailsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(
+      [
+        { path: 'employee', component: EmployeeComponent },
+        { path: 'posts', component: PostsComponent },
+        { path: 'posts/:postid', component: PostDetailsComponent },
+        { path: 'order', component: OrderComponent },
+        { path: 'photos', component: PhotosComponent },
+        { path: 'department', component: DepartmentComponent },
+        { path: '', redirectTo: 'order', pathMatch: 'full' },
+        { path: '**', component: PagenotfoundComponent }
+      ]
+    )
   ],
   providers: [DepartmentService,
     { provide: HTTP_INTERCEPTORS, useClass: PostInterceptorService, multi: true },
