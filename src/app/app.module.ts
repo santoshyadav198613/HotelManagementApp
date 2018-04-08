@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee/employee.component';
@@ -21,6 +21,7 @@ import { PostInterceptorService } from './posts/service/post-interceptor.service
 import { APP_PROVIDER, App_Values } from './appProvider/appProvider';
 import { ENV_PROVIDER } from './envProvider/envProvider';
 import { environment } from '../environments/environment';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +34,14 @@ import { environment } from '../environments/environment';
     HomeComponent,
     PostsComponent,
     PostsListComponent,
-    PhotosComponent
+    PhotosComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [DepartmentService,
     { provide: HTTP_INTERCEPTORS, useClass: PostInterceptorService, multi: true },

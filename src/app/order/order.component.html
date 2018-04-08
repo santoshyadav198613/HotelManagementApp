@@ -1,0 +1,104 @@
+<h1>
+  Order Form
+</h1>
+
+{{orderForm.value | json}}
+
+<form [formGroup]="orderForm" (submit)="placeOrder();orderForm.reset()">
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
+    {{orderForm.get('firstName').invalid}}
+    {{orderForm.get('firstName').valid}}
+    {{orderForm.get('firstName').pristine}}
+    {{orderForm.get('firstName').dirty}}
+    {{orderForm.get('firstName').errors}}
+    {{orderForm.get('firstName').value}}
+    <div class="alert alert-danger" *ngIf="orderForm.get('firstName').errors?.required"> 
+      Please provide the First Name.
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name">
+  </div>
+
+  <div class="form-group">
+    <input type="email" class="form-control" formControlName="email" placeholder="Email">
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="mobile" placeholder="Mobile">
+  </div>
+
+  <div class="form-group" formGroupName="address">
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="addressLine1" placeholder="Address Line1">
+
+      {{orderForm.get('address.addressLine1').invalid}}
+    {{orderForm.get('address.addressLine1').valid}}
+    {{orderForm.get('address.addressLine1').pristine}}
+    {{orderForm.get('address.addressLine1').dirty}}
+    {{orderForm.get('address.addressLine1').errors | json}}
+    {{orderForm.get('address.addressLine1').value}}
+    <div class="alert alert-danger" *ngIf="orderForm.get('address.addressLine1').errors?.required"> 
+      Please provide the Address Line1.
+    </div>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="addressLine1" placeholder="Address Line2">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="city" placeholder="City">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="pin" placeholder="Pin">
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="button" class="btn btn-success" (click)="addCard()">
+      Add Card
+    </button>
+  </div>
+  <div class="form-group" formArrayName="cards">
+    <div *ngFor="let card of orderForm['controls'].cards['controls'];let i=index">
+      <div [formGroupName]="i">
+        <div class="form-group">
+          <input type="number" class="form-control" formControlName="cardNumber" placeholder="Card Number">
+          {{orderForm.get(['cards',i,'cardNumber']).invalid}}
+          {{orderForm.get(['cards',i,'cardNumber']).valid}}
+          {{orderForm.get(['cards',i,'cardNumber']).pristine}}
+          {{orderForm.get(['cards',i,'cardNumber']).dirty}}
+          {{orderForm.get(['cards',i,'cardNumber']).errors | json}}
+          {{orderForm.get(['cards',i,'cardNumber']).value}}
+          <div class="alert alert-danger" *ngIf="orderForm.get(['cards',i,'cardNumber']).errors?.required"> 
+            Please provide the card number.
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control" formControlName="expMonth" placeholder="Expiry Month">
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control" formControlName="expYear" placeholder="Expiry Year">
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control" formControlName="cvv" placeholder="CVV">
+          <div class="alert alert-danger" *ngIf="orderForm.get(['cards',i,'cvv']).errors?.required"> 
+            Please provide the card number.
+          </div>
+          <div class="alert alert-danger" *ngIf="orderForm.get(['cards',i,'cvv']).errors?.invalidCvv"> 
+           Cvv can be between 3 to 6 characters.
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-danger" (click)="removeCard(i)">Remove Card</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button [disabled]="orderForm.invalid" type="submit" class="btn btn-primary">
+      Place Order
+    </button>
+
+  </div>
+
+</form>
