@@ -12,7 +12,7 @@ import { Posts } from '../service/posts';
 })
 export class PostDetailsComponent implements OnInit {
   postId: number;
-  post: Posts;
+  post: Posts = new Posts();
   constructor(private route: ActivatedRoute,
     private postService: PostsService) { }
 

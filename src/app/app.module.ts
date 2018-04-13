@@ -6,6 +6,9 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RoutingModule } from './routing/routing.module';
+import { PostsModule } from './posts/posts.module';
+import { OrderModule } from './order/order.module';
+
 
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee/employee.component';
@@ -16,17 +19,14 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 
 import { DepartmentService } from './department/service/department.service';
-import { PostsComponent } from './posts/posts.component';
-import { PostsListComponent } from './posts/posts-list/posts-list.component';
 import { PhotosComponent } from './photos/photos.component';
 import { PostInterceptorService } from './posts/service/post-interceptor.service';
 
 import { APP_PROVIDER, App_Values } from './appProvider/appProvider';
 import { ENV_PROVIDER } from './envProvider/envProvider';
 import { environment } from '../environments/environment';
-import { OrderComponent } from './order/order.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { PostDetailsComponent } from './posts/post-details/post-details.component';
+
 
 @NgModule({
   declarations: [
@@ -36,19 +36,17 @@ import { PostDetailsComponent } from './posts/post-details/post-details.componen
     DepartmentComponent,
     DepartmentListComponent,
     HeaderComponent,
-    HomeComponent,
-    PostsComponent,
-    PostsListComponent,
+    HomeComponent,    
     PhotosComponent,
-    OrderComponent,
-    PagenotfoundComponent,
-    PostDetailsComponent
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    PostsModule,
+    OrderModule,
     RoutingModule
   ],
   providers: [DepartmentService,
