@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoutingModule } from './routing/routing.module';
 import { PostsModule } from './posts/posts.module';
 import { OrderModule } from './order/order.module';
-
+import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee/employee.component';
@@ -28,6 +28,7 @@ import { environment } from '../environments/environment';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,9 +43,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
+    SharedModule,
     PostsModule,
     OrderModule,
     RoutingModule
