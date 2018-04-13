@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { RoutingModule } from './routing/routing.module';
+
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
@@ -47,18 +49,7 @@ import { PostDetailsComponent } from './posts/post-details/post-details.componen
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(
-      [
-        { path: 'employee', component: EmployeeComponent },
-        { path: 'posts', component: PostsComponent },
-        { path: 'posts/:postid', component: PostDetailsComponent },
-        { path: 'order', component: OrderComponent },
-        { path: 'photos', component: PhotosComponent },
-        { path: 'department', component: DepartmentComponent },
-        { path: '', redirectTo: 'order', pathMatch: 'full' },
-        { path: '**', component: PagenotfoundComponent }
-      ]
-    )
+    RoutingModule
   ],
   providers: [DepartmentService,
     { provide: HTTP_INTERCEPTORS, useClass: PostInterceptorService, multi: true },
