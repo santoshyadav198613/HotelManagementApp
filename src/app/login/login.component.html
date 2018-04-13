@@ -1,0 +1,17 @@
+<h1>
+  Login
+</h1>
+
+<form class="col-md-6" #loginForm="ngForm" (submit)="login();loginForm.reset()" novalidate>
+  <div class="form-group">
+    <input class="form-control" required type="text" [(ngModel)]="user.userName" name="userName" placeholder="User Name">
+  </div>
+  <div class="form-group">
+    <input class="form-control" required type="password" [(ngModel)]="user.password" name="password" placeholder="Password">
+  </div>
+  <div>
+    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">
+      Login
+    </button>
+  </div>
+</form>

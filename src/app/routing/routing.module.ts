@@ -5,21 +5,24 @@ import { EmployeeComponent } from '../employee/employee.component';
 import { PhotosComponent } from '../photos/photos.component';
 import { DepartmentComponent } from '../department/department.component';
 import { PagenotfoundComponent } from '../pagenotfound/pagenotfound.component';
+import { LoginComponent } from '../login/login.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forRoot(
       [
-        { path: 'employee', component: EmployeeComponent },
-        { path: 'photos', component: PhotosComponent },
-        { path: 'department', component: DepartmentComponent },
-        { path: '', redirectTo: 'order', pathMatch: 'full' },
+        { path: 'login', component: LoginComponent },
+        { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard] },
+        { path: 'photos', component: PhotosComponent , canActivate: [AuthGuard] },
+        { path: 'department', component: DepartmentComponent , canActivate: [AuthGuard] },
+        { path: '', redirectTo: 'login', pathMatch: 'full' },
         { path: '**', component: PagenotfoundComponent }
       ]
     )
   ],
-  exports : [ RouterModule ],
+  exports: [RouterModule],
   declarations: []
 })
 export class RoutingModule { }

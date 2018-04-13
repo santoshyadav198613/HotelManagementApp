@@ -26,6 +26,9 @@ import { APP_PROVIDER, App_Values } from './appProvider/appProvider';
 import { ENV_PROVIDER } from './envProvider/envProvider';
 import { environment } from '../environments/environment';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './login/service/login.service';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -37,9 +40,10 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     DepartmentComponent,
     DepartmentListComponent,
     HeaderComponent,
-    HomeComponent,    
+    HomeComponent,
     PhotosComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,9 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
   providers: [DepartmentService,
     { provide: HTTP_INTERCEPTORS, useClass: PostInterceptorService, multi: true },
     { provide: APP_PROVIDER, useValue: App_Values },
-    { provide: ENV_PROVIDER, useValue: environment }],
+    { provide: ENV_PROVIDER, useValue: environment },
+    AuthGuard,
+    LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
