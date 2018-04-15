@@ -12,6 +12,7 @@ export class EmployeeListComponent implements OnInit, OnChanges ,OnDestroy  {
   @Input() employeeList: Employee[] = [];
   @Input() title: string;
   @Output() selectedEmployee = new EventEmitter<Employee>();
+  salary : number = 0;
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {

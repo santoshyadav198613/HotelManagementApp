@@ -7,15 +7,16 @@
   {{ departmentName }}
 </div>
 
-<div *ngIf="isVisible">
+<!-- <div *ngIf="isVisible">
 
-  <app-employee-list [title]="title" [employeeList]="empList" (selectedEmployee)="receiveEmployee($event)"></app-employee-list>
 
-</div>
+</div> -->
 
 <button class="btn btn-primary" type="button" (click)="toggle()">Toggle</button>
 
 {{empList | json}}
+
+<app-employee-list [title]="title" [employeeList]="empList" (selectedEmployee)="receiveEmployee($event)"></app-employee-list>
 
 <div [ngSwitch]="role">
   <div *ngSwitchCase="'Admin'">

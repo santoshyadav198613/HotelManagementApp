@@ -27,6 +27,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/service/login.service';
 import { AuthGuard } from './guards/auth.guard';
+import { PasswordValidatorDirective } from './custom/password-validator/password-validator.directive';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { AuthGuard } from './guards/auth.guard';
     HomeComponent,
     PhotosComponent,
     PagenotfoundComponent,
-    LoginComponent
+    LoginComponent,
+    PasswordValidatorDirective
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import { LoginService } from './service/login.service';
 })
 export class LoginComponent implements OnInit {
   user : User = new User();
+  color: string = 'wheat';
   constructor(private loginService: LoginService,
   private router: Router) { }
 

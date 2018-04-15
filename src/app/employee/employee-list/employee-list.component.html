@@ -3,6 +3,10 @@
     {{title}}
   </h1>
 </app-header>
+
+{{salary}}
+<input type="number" class="form-control" [(ngModel)]="salary" placeholder="salary" name="salary">
+
 <table class="table">
   <thead>
     <tr>
@@ -12,17 +16,19 @@
       <th>Salary</th>
       <th>Email</th>
       <th>Department</th>
+      <th>Date of Birth</th>
       <th>Select</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let emp of employeeList;let i=index; let even = even ; let odd = odd">
-      <td>{{i+1}}</td>
+    <tr *ngFor="let emp of employeeList | salary : salary ;let i=index; let even = even ; let odd = odd">
+      <td>{{i+1 | percent}}</td>
       <td>{{emp.id}} {{even}} {{odd}}</td>
-      <td>{{emp.name}}</td>
-      <td>{{emp.salary}}</td>
+      <td>{{emp.name | name | uppercase}}</td>
+      <td>{{emp.salary | currency : 'INR' }}</td>
       <td>{{emp.email}}</td>
       <td>{{emp.department}}</td>
+      <td>{{emp.dob | date : 'dd-MMM-yyyy'}}</td>
       <button class="btn btn-primary" (click)="sendSelected(emp)">Select</button>
     </tr>
   </tbody>

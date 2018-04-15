@@ -21,13 +21,13 @@ export class EmployeeComponent implements OnInit, DoCheck {
   ngOnInit() {
     this.empList = [
       {
-        id: 1, name: 'Paul', department: 'IT', email: 'paul@test.com', salary: 2000
+        id: 1, name: 'Paul', department: 'IT', email: 'paul@test.com', salary: 2000 , dob : new Date('10-Nov-2012')
       },
       {
-        id: 2, name: 'Alexis', department: 'Marketing', email: 'Alexis@test.com', salary: 3000
+        id: 2, name: 'Alexis', department: 'Marketing', email: 'Alexis@test.com', salary: 3000 ,dob : new Date('10-Oct-1089')
       },
       {
-        id: 3, name: 'Raul', department: 'IT', email: 'Raul@test.com', salary: 4000
+        id: 3, name: 'Raul', department: 'IT', email: 'Raul@test.com', salary: 4000 ,dob : new Date('10-Jan-1986')
       },
     ]
   }

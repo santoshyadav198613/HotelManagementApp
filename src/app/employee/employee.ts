@@ -4,4 +4,5 @@ export class Employee {
     department: string;
     email: string;
     salary: number;
+    dob: Date;
 }
