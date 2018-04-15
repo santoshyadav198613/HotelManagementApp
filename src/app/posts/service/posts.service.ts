@@ -9,7 +9,9 @@ import { IAppProvider } from '../../appProvider/IappProvider';
 @Injectable()
 export class PostsService {
 
-  constructor(private http: HttpClient, @Inject(APP_PROVIDER) private appProvider: IAppProvider) { }
+  constructor(isLoggedIn : boolean,  private http: HttpClient, @Inject(APP_PROVIDER) private appProvider: IAppProvider) { 
+    console.log(isLoggedIn);
+  }
 
   getPosts() {
     return this.http.get<Posts[]>(this.appProvider.apiEndpoint + 'posts',

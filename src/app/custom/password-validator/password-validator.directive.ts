@@ -10,7 +10,7 @@ export class PasswordValidatorDirective implements Validator {
   constructor() { }
 
   validate(control: AbstractControl): ValidationErrors | null {
-    if (control !== undefined || control! == null) {
+    if (control.value !== undefined && control.value !== null) {
       if (control.value.length < 3 || control.value.length > 6) {
         return { passwordInvalid: true };
       }

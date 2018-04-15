@@ -9,8 +9,11 @@ import { AuthGuard } from '../guards/auth.guard';
 import { PostEditComponent } from './post-edit/post-edit.component';
 import { PostResolveGuard } from './service/post-resolve.guard';
 import { PostsService } from './service/posts.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { PostInterceptorService } from './service/post-interceptor.service';
+import { postFactory } from './service/post-factory.service';
+import { LoginService } from '../login/service/login.service';
+import { APP_PROVIDER } from '../appProvider/appProvider';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { PostInterceptorService } from './service/post-interceptor.service';
     PostDetailsComponent,
     PostEditComponent
   ],
-  providers: [PostsService, PostResolveGuard,
-    { provide: HTTP_INTERCEPTORS, useClass: PostInterceptorService, multi: true }]
+  providers: [{
+    provide: PostsService, useFactory: postFactory,
+    deps: [LoginService, HttpClient, APP_PROVIDER]
+  }, PostResolveGuard,
+  { provide: HTTP_INTERCEPTORS, useClass: PostInterceptorService, multi: true }]
 })
 export class PostsModule { }

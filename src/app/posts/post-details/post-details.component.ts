@@ -7,8 +7,7 @@ import { Posts } from '../service/posts';
 @Component({
   selector: 'app-post-details',
   templateUrl: './post-details.component.html',
-  styleUrls: ['./post-details.component.css'],
-  providers: [PostsService]
+  styleUrls: ['./post-details.component.css']
 })
 export class PostDetailsComponent implements OnInit {
   postId: number;
