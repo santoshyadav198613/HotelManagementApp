@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RoutingModule } from './routing/routing.module';
-import { PostsModule } from './posts/posts.module';
 import { OrderModule } from './order/order.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -20,7 +19,6 @@ import { HomeComponent } from './home/home.component';
 
 import { DepartmentService } from './department/service/department.service';
 import { PhotosComponent } from './photos/photos.component';
-import { PostInterceptorService } from './posts/service/post-interceptor.service';
 
 import { APP_PROVIDER, App_Values } from './appProvider/appProvider';
 import { ENV_PROVIDER } from './envProvider/envProvider';
@@ -29,7 +27,6 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/service/login.service';
 import { AuthGuard } from './guards/auth.guard';
-
 
 
 @NgModule({
@@ -48,12 +45,10 @@ import { AuthGuard } from './guards/auth.guard';
   imports: [
     BrowserModule,
     SharedModule,
-    PostsModule,
     OrderModule,
     RoutingModule
   ],
   providers: [DepartmentService,
-    { provide: HTTP_INTERCEPTORS, useClass: PostInterceptorService, multi: true },
     { provide: APP_PROVIDER, useValue: App_Values },
     { provide: ENV_PROVIDER, useValue: environment },
     AuthGuard,

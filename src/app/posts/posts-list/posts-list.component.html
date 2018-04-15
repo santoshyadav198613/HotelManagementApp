@@ -17,6 +17,9 @@ Downloaded Data : {{downloadedBytes}}
       <th>
         Details
       </th>
+      <th>
+        Edit
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -33,6 +36,11 @@ Downloaded Data : {{downloadedBytes}}
       <td>
         <button type="button" class="btn btn-danger" [routerLink]="[post.id]">
           Details
+        </button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-success" [routerLink]="[post.id,'edit']">
+          Edit
         </button>
       </td>
     </tr>

@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 import { PostsService } from './service/posts.service';
 import { Posts } from './service/posts';
-import { PostInterceptorService } from './service/post-interceptor.service';
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css'],
-  providers: [PostsService]
+  providers: []
 })
 export class PostsComponent implements OnInit {
   postData: Posts = new Posts();

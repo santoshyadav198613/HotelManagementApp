@@ -18,10 +18,10 @@ export class LoginComponent implements OnInit {
 
   login(){
     if(this.loginService.login(this.user)){
-      //naviate to home page
+      //naviate to home page      
       this.router.navigate(['employee']);
     }
-    // show the error
+    // show the errort
   }
 
 }

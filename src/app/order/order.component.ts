@@ -43,7 +43,7 @@ export class OrderComponent implements OnInit {
         cardNumber: new FormControl('', [Validators.required, CustomValidator.CardValidator]),
         expMonth: new FormControl('', [Validators.required, Validators.min(1), Validators.max(12)]),
         expYear: new FormControl('', [Validators.required]),
-        cvv: new FormControl('', [Validators.required,CustomValidator.cvvValidator])
+        cvv: new FormControl('', [Validators.required, CustomValidator.cvvValidator])
       }
     )
   }

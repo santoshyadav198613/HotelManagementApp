@@ -4,7 +4,7 @@
 
 {{orderForm.value | json}}
 
-<form [formGroup]="orderForm" (submit)="placeOrder();orderForm.reset()">
+<form [formGroup]="orderForm" (submit)="placeOrder()">
   <div class="form-group">
     <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
     {{orderForm.get('firstName').invalid}}

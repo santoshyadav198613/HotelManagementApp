@@ -14,9 +14,10 @@ import { AuthGuard } from '../guards/auth.guard';
     RouterModule.forRoot(
       [
         { path: 'login', component: LoginComponent },
+        { path: 'posts', loadChildren: '../posts/posts.module#PostsModule', canLoad: [AuthGuard] },
         { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard] },
-        { path: 'photos', component: PhotosComponent , canActivate: [AuthGuard] },
-        { path: 'department', component: DepartmentComponent , canActivate: [AuthGuard] },
+        { path: 'photos', component: PhotosComponent, canActivate: [AuthGuard] },
+        { path: 'department', component: DepartmentComponent, canActivate: [AuthGuard] },
         { path: '', redirectTo: 'login', pathMatch: 'full' },
         { path: '**', component: PagenotfoundComponent }
       ]
